@@ -104,13 +104,6 @@ public class QuizActivityFragment extends Fragment {
         questionNumberTextView = (TextView) view.findViewById(R.id.questionNumberTextView);
         questionNumberTextView.setText(getString(R.string.question, 1, SUPERHEROES_IN_QUIZ));
 
-
-
-        // Load the shake animation
-        /*shakeAnimation = AnimationUtils.loadAnimation(getActivity(),
-                R.anim.incorrect_shake);
-        shakeAnimation.setRepeatCount(3);*/
-
         // configure listeners for the guess Buttons
         for(LinearLayout row : guessLinearLayouts) {
             for (int column = 0; column < row.getChildCount(); column++) {
@@ -118,9 +111,6 @@ public class QuizActivityFragment extends Fragment {
                 button.setOnClickListener(guessButtonListener);
             }
         }
-
-        // set questionNumberTextView's text
-
 
         return view; // return the fragment's view for display
     }
@@ -306,7 +296,6 @@ public class QuizActivityFragment extends Fragment {
         public void onClick(View v) {
             Button guessButton = ((Button) v);
             String guess = guessButton.getText().toString();
-            //String answer = correctAnswer;
             ++totalGuesses; // increment number of guesses the user has made
 
             if (guess.equals(correctAnswer)) { // if the guess is correct
@@ -359,7 +348,6 @@ public class QuizActivityFragment extends Fragment {
                     quizResults.show(getFragmentManager(), "quiz results");*/
                 }
                 else { // answer is correct but quiz is not over
-                    // load the next flag after a 2-second delay
                     handler.postDelayed(
                             new Runnable() {
                                 @Override
@@ -370,8 +358,8 @@ public class QuizActivityFragment extends Fragment {
                 }
             }
             else { // answer was incorrect
-                shakeAnim(); // play shake
 
+                shakeAnim(); // play shake
                 // display "Incorrect!" in red
                 answerTextView.setText(R.string.incorrect_answer);
                 answerTextView.setTextColor(getResources().getColor(
@@ -392,6 +380,9 @@ public class QuizActivityFragment extends Fragment {
         }
     }
 
+    /**
+     * shake the image
+     */
     public void shakeAnim(){
         // getContext() -> return Context
         shakeAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.shake_anim);
