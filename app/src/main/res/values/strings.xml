@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">CS723Superheroes_V2</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_quiz">QuizActivity</string>
+    <string name="title_activity_setting">SettingActivity</string>
+
+    <string name="question">Question %1$d of %2$d</string>
+    <string name="guess_superheroes">Guess the SuperHeroes</string>
+    <string name="guess_superPower">Guess the SuperPower</string>
+    <string name="guess_Onething">Guess the One thing</string>
+    <string name="incorrect_answer">Incorrect!</string>
+    <string name="reset_quiz">Reset Quiz</string>
+    <string name="restarting_quiz">Quiz will restart with your new setting</string>
+    <string name="quiz_type">Quiz Type</string>
+    <string name="quiz_type_description">Choose superheroe name, superpower
+        or one thing about them</string>
+    <string name="default_quiz_type">Superpower</string>
+
+</resources>
