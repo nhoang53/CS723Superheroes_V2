@@ -19,24 +19,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:id="@+id/questionNumberTextView"/>
+        android:id="@+id/questionNumberTextView"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="5dp"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/holo_orange_dark" />
 
     <ImageView
         android:layout_width="match_parent"
-        app:srcCompat="@mipmap/ic_launcher"
+        app:srcCompat="@drawable/ic_superhero"
         android:id="@+id/heroImageView"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:cropToPadding="false"
-        android:adjustViewBounds="true"
         android:scaleType="fitCenter"
-        android:layout_weight="0.14" />
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/quiz_type_description"/>
 
     <TextView
         android:text="@string/guess_superheroes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/guessTextView"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/holo_orange_dark" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -50,7 +59,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/button"
             android:layout_weight="1"
-            style="@android:style/Widget.Material.Button.Colored" />
+            style="@android:style/Widget.Material.Button.Colored"
+            android:textColor="@color/button_text_color"
+            android:lines="2"
+            android:textAlignment="center" />
 
         <Button
             android:text="Button"
@@ -58,7 +70,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/button2"
             android:layout_weight="1"
-            style="@style/Widget.AppCompat.Button.Colored" />
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:textColor="@color/button_text_color"
+            android:lines="2"
+            android:textAlignment="center" />
 
     </LinearLayout>
 
@@ -74,7 +89,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/button3"
             android:layout_weight="1"
-            style="@style/Widget.AppCompat.Button.Colored" />
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:textColor="@color/button_text_color"
+            android:lines="2"
+            android:textAlignment="center" />
 
         <Button
             android:text="Button"
@@ -82,7 +100,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/button4"
             android:layout_weight="1"
-            style="@style/Widget.AppCompat.Button.Colored" />
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:textColor="@color/button_text_color"
+            android:lines="2"
+            android:textAlignment="center" />
 
     </LinearLayout>
 
@@ -91,7 +112,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/answerTextView"
         android:layout_gravity="center_horizontal"
-        android:textSize="24sp" />
+        android:textSize="30sp" />
 
 
 </LinearLayout>
