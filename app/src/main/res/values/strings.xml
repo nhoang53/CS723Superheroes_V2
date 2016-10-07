@@ -15,5 +15,6 @@
     <string name="quiz_type_description">Choose superheroe name, superpower
         or one thing about them</string>
     <string name="default_quiz_type">Superpower</string>
+    <string name="results">%1$d guesses, %2$.02f%% correct</string>
 
 </resources>

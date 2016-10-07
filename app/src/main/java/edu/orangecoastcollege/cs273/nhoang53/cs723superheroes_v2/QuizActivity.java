@@ -50,6 +50,13 @@ public class QuizActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // get data from JSON file
+        try {
+            allSuper = JSONLoader.loadJSONFromAsset(context);
+        } catch (IOException ex) {
+            Log.e("CS273 Superheroes", "Error loading JSON data." + ex.getMessage());
+        }
+
         // set default values in the app's SharedPreferences
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
@@ -84,24 +91,12 @@ public class QuizActivity extends AppCompatActivity {
 
         if (preferencesChanged) {
 
-            // get data from JSON file
-            try {
-                allSuper = JSONLoader.loadJSONFromAsset(context);
-            } catch (IOException ex) {
-                Log.e("CS273 Superheroes", "Error loading JSON data." + ex.getMessage());
-            }
-
             // now that the default preferences have been set,
             // initialize QuizActivityFragment and start the quiz
             QuizActivityFragment quizFragment = (QuizActivityFragment)
-                    getSupportFragmentManager().findFragmentById(R.id.quizFragment);
+                    getFragmentManager().findFragmentById(R.id.quizFragment);
             quizFragment.changeQuizType(
                     PreferenceManager.getDefaultSharedPreferences(this), allSuper);
-            //quizFragment.updateGuessRows(
-            // PreferenceManager.getDefaultSharedPreferences(this));
-            //quizFragment.updateRegions(
-            // PreferenceManager.getDefaultSharedPreferences(this));
-            //quizFragment.resetQuiz();
             preferencesChanged = false;
         }
     }
@@ -156,9 +151,9 @@ public class QuizActivity extends AppCompatActivity {
                     preferencesChanged = true; // user changed app setting
 
                     QuizActivityFragment quizFragment = (QuizActivityFragment)
-                            getSupportFragmentManager().findFragmentById(R.id.quizFragment);
+                            getFragmentManager().findFragmentById(R.id.quizFragment);
+                            //getSupportFragmentManager().findFragmentById(R.id.quizFragment);
 
-                    //if (key.equals(QUIZ_TYPE)) { // user change quiz type
                     try {
                         quizFragment.changeQuizType(sharedPreferences, allSuper); // pass data to Fragment
 
@@ -169,7 +164,7 @@ public class QuizActivity extends AppCompatActivity {
                     catch (Exception e){
                         Log.e("QuizActivity.", "Error loading " + sharedPreferences + ". " + e.getMessage());
                     }
-                    //}
+
                 }
             };
 }

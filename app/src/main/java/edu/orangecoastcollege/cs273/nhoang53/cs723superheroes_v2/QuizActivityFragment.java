@@ -7,14 +7,13 @@ package edu.orangecoastcollege.cs273.nhoang53.cs723superheroes_v2;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.drawable.Drawable;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +24,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.os.Handler;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,7 +31,10 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import android.content.Context;
+
+import android.app.DialogFragment;
+//import android.support.v4.app.Fragment;
+//import android.support.v4.app.FragmentActivity;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -41,9 +42,9 @@ import android.content.Context;
 public class QuizActivityFragment extends Fragment {
 
     private static final String TAG = "SuperpowerQuiz Activity";
-    private static final int SUPERHEROES_IN_QUIZ = 10;
+    private static final int SUPERHEROES_IN_QUIZ = 2;
 
-    private FragmentActivity context = getActivity(); // get FragmentActivity, // getContext() -> return Context
+    //private FragmentActivity context = getActivity(); // get FragmentActivity, // getContext() -> return Context
     private ArrayList<Superheroes> allSuperheroes;
     private String quizType; // the quiz type that user choose on setting
     private List<String> usernameList; // username and image name
@@ -170,6 +171,10 @@ public class QuizActivityFragment extends Fragment {
      * Configure and start up a new quiz based on the settings.
      */
     public void guessSuperheroesQuiz(){
+        // reset quiz
+        numberCorrect = 0;
+        totalGuesses = 0;
+
         int flagCounter = 0;
         int numberOfHeroes = nameList.size();
         System.out.println("size: " + numberOfHeroes);
@@ -313,7 +318,7 @@ public class QuizActivityFragment extends Fragment {
                 // if the user has correctly identified FLAGS_IN_QUIZ flags
                 if (numberCorrect == SUPERHEROES_IN_QUIZ) {
                     // DialogFragment to display quiz stats and start new quiz
-                    /*DialogFragment quizResults =
+                    DialogFragment quizResults =
                             new DialogFragment() {
                                 // create an AlertDialog and return it
                                 @Override
@@ -337,15 +342,11 @@ public class QuizActivityFragment extends Fragment {
 
                                     return builder.create(); // return the AlertDialog
                                 }
-                            };*/
-
-                    // reset quiz
-                    numberCorrect = 0;
-                    guessSuperheroesQuiz();
+                            };
 
                     // use FragmentManager to display the DialogFragment
-                    /*quizResults.setCancelable(false);
-                    quizResults.show(getFragmentManager(), "quiz results");*/
+                    quizResults.setCancelable(false);
+                    quizResults.show(getFragmentManager(), "quiz results");
                 }
                 else { // answer is correct but quiz is not over
                     handler.postDelayed(
