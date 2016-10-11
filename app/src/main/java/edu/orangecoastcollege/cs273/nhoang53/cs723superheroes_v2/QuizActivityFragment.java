@@ -42,7 +42,7 @@ import android.app.DialogFragment;
 public class QuizActivityFragment extends Fragment {
 
     private static final String TAG = "SuperpowerQuiz Activity";
-    private static final int SUPERHEROES_IN_QUIZ = 2;
+    private static final int SUPERHEROES_IN_QUIZ = 10;
 
     //private FragmentActivity context = getActivity(); // get FragmentActivity, // getContext() -> return Context
     private ArrayList<Superheroes> allSuperheroes;
